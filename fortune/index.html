@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A refined, mobile-friendly fortune cookie experience with a quiet luxury aesthetic."
+    />
+    <title>Your Fortune</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="masthead" aria-label="Fortune heading">
+        <p class="eyebrow">YOUR FORTUNE</p>
+        <p class="subtitle">A little moment for a meaningful message.</p>
+      </header>
+
+      <main class="fortune-stage">
+        <div class="cookie-panel" id="cookiePanel">
+          <button
+            class="fortune-cookie"
+            id="fortuneCookie"
+            type="button"
+            aria-label="Open your fortune cookie"
+          >
+            <span class="ornament-half ornament-half-left" aria-hidden="true">
+              <img src="Chinese-Ornament.svg" alt="" />
+            </span>
+            <span class="ornament-half ornament-half-right" aria-hidden="true">
+              <img src="Chinese-Ornament.svg" alt="" />
+            </span>
+          </button>
+          <p class="prompt">Tap to discover your fortune.</p>
+        </div>
+
+        <section
+          class="fortune-card hidden"
+          id="fortuneCard"
+          aria-live="polite"
+          aria-label="Displayed fortune message"
+        >
+          <div class="ornament" aria-hidden="true">──────── ✦ ────────</div>
+          <p class="fortune-header">YOUR FORTUNE</p>
+          <blockquote class="fortune-text" id="fortuneText"></blockquote>
+          <p class="fortune-signature">— fortune cookie</p>
+        </section>
+
+        <div class="actions">
+          <button
+            class="another-fortune hidden"
+            id="anotherFortune"
+            type="button"
+            aria-label="Reveal another fortune"
+          >
+            Another Fortune
+          </button>
+        </div>
+      </main>
+
+      <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

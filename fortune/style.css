@@ -1,0 +1,380 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --cream: #f5f0e6;
+  --ivory: #faf7f0;
+  --forest: #17352a;
+  --gold: #b89b5e;
+  --dark: #1e211d;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 48%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(23, 53, 42, 0.02)),
+    var(--cream);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(23, 21, 18, 0.012),
+      rgba(23, 21, 18, 0.012) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.65), transparent 28%),
+    radial-gradient(circle at 80% 12%, rgba(23, 53, 42, 0.03), transparent 30%);
+  mix-blend-mode: multiply;
+  opacity: 0.75;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 56%, rgba(17, 17, 14, 0.08) 100%);
+}
+
+button,
+blockquote {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+}
+
+.page-shell {
+  position: relative;
+  width: min(100%, 28rem);
+  min-height: 100vh;
+  padding: 2.5rem 1.25rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  isolation: isolate;
+}
+
+.masthead {
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow,
+.fortune-header {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.eyebrow {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1;
+}
+
+.subtitle {
+  margin: 0.55rem auto 0;
+  max-width: 20rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: rgba(30, 33, 29, 0.8);
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.fortune-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 23rem;
+}
+
+.cookie-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.cookie-panel.is-hidden {
+  opacity: 0;
+  transform: scale(0.96);
+  pointer-events: none;
+}
+
+.fortune-cookie {
+  position: relative;
+  width: min(15rem, 62vw);
+  aspect-ratio: 1;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.35s ease;
+  z-index: 1;
+}
+
+.fortune-cookie:hover,
+.fortune-cookie:focus-visible {
+  transform: translateY(-3px);
+}
+
+.ornament-half {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.ornament-half img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ornament-half-left {
+  clip-path: inset(0 50% 0 0);
+  transform-origin: 100% 50%;
+}
+
+.ornament-half-right {
+  clip-path: inset(0 0 0 50%);
+  transform-origin: 0 50%;
+}
+
+.fortune-cookie.is-opening .ornament-half-left {
+  animation: ornament-open-left 1.25s cubic-bezier(0.2, 0.75, 0.3, 1) both;
+}
+
+.fortune-cookie.is-opening .ornament-half-right {
+  animation: ornament-open-right 1.25s cubic-bezier(0.2, 0.75, 0.3, 1) both;
+}
+
+.fortune-cookie:focus-visible,
+.another-fortune:focus-visible {
+  outline: 2px solid rgba(23, 53, 42, 0.65);
+  outline-offset: 3px;
+}
+
+.prompt {
+  margin: 1.1rem 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: rgba(30, 33, 29, 0.7);
+}
+
+.fortune-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 1.2rem 1.3rem;
+  background: linear-gradient(180deg, rgba(250, 247, 240, 0.98), rgba(245, 240, 230, 0.96));
+  border: 1px solid rgba(184, 155, 94, 0.8);
+  border-radius: 1.1rem;
+  box-shadow: 0 16px 40px rgba(37, 31, 22, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.75rem) scale(0.98);
+  transition:
+    opacity 0.35s ease 0.12s,
+    transform 0.7s cubic-bezier(0.18, 0.8, 0.24, 1),
+    visibility 0.7s ease;
+  width: min(100%, 24rem);
+  margin: 0 auto;
+}
+
+.fortune-card.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.ornament {
+  color: var(--gold);
+  letter-spacing: 0.18em;
+  font-size: 0.76rem;
+  margin-bottom: 0.8rem;
+}
+
+.fortune-header {
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.8rem;
+}
+
+.fortune-text {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  color: var(--dark);
+  font-weight: 500;
+  text-wrap: pretty;
+  max-width: 12ch;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.fortune-signature {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: none;
+  color: rgba(30, 33, 29, 0.7);
+  font-style: italic;
+}
+
+.actions {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.another-fortune {
+  border: 1px solid rgba(184, 155, 94, 0.8);
+  background: linear-gradient(180deg, var(--forest), #0f271f);
+  color: var(--ivory);
+  padding: 0.9rem 1.4rem;
+  min-width: 11.5rem;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(23, 53, 42, 0.16);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.another-fortune:hover,
+.another-fortune:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 15px 28px rgba(23, 53, 42, 0.22);
+}
+
+.hidden {
+  display: none;
+}
+
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  left: var(--origin-x);
+  top: var(--origin-y);
+  width: var(--size);
+  height: calc(var(--size) * 1.8);
+  opacity: 0;
+  border-radius: 0.12rem;
+  box-shadow: 0 0 10px rgba(23, 53, 42, 0.08);
+  animation: confetti-fall var(--duration) cubic-bezier(0.12, 0.68, 0.26, 1) forwards;
+}
+
+@keyframes ornament-open-left {
+  0% {
+    transform: translate(0, 0) rotate(0) scale(1);
+  }
+  18% {
+    transform: translate(-4px, -4px) rotate(-2deg) scale(1.02);
+  }
+  100% {
+    transform: translate(-112px, 14px) rotate(-12deg) scale(0.96);
+  }
+}
+
+@keyframes ornament-open-right {
+  0% {
+    transform: translate(0, 0) rotate(0) scale(1);
+  }
+  18% {
+    transform: translate(4px, -4px) rotate(2deg) scale(1.02);
+  }
+  100% {
+    transform: translate(112px, 14px) rotate(12deg) scale(0.96);
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.6);
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--x), var(--y), 0) rotate(var(--spin)) scale(1);
+  }
+}
+
+@media (min-width: 640px) {
+  .page-shell {
+    width: min(100%, 35rem);
+    padding-top: 3rem;
+  }
+
+  .fortune-card {
+    padding: 1.8rem 1.6rem 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fortune-cookie,
+  .fortune-card,
+  .another-fortune,
+  .cookie-panel {
+    transition: none !important;
+  }
+}

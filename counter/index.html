@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A luxurious old-money birthday page with an elegant countdown and personalized greeting."
+    />
+    <title>Old Money Birthday</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="ornament ornament-left" aria-hidden="true">✦</div>
+      <div class="ornament ornament-right" aria-hidden="true">✦</div>
+
+      <main class="card" aria-live="polite">
+        <p class="kicker">For the one we adore</p>
+        <h1 id="greeting" class="greeting">Dear You ❤️</h1>
+
+        <section class="countdown-section" aria-labelledby="countdown-title">
+          <h2 id="countdown-title" class="sr-only">Time since the birthday</h2>
+          <p class="lead">We are so happy to have you here for</p>
+
+          <div id="countdown" class="countdown" role="timer" aria-live="polite" aria-atomic="true">
+            <div class="unit" aria-label="Days">
+              <span id="days" class="value">0</span>
+              <span class="label">DAYS</span>
+            </div>
+            <div class="unit" aria-label="Hours">
+              <span id="hours" class="value">00</span>
+              <span class="label">HOURS</span>
+            </div>
+            <div class="unit" aria-label="Minutes">
+              <span id="minutes" class="value">00</span>
+              <span class="label">MINUTES</span>
+            </div>
+            <div class="unit" aria-label="Seconds">
+              <span id="seconds" class="value">00</span>
+              <span class="label">SECONDS</span>
+            </div>
+          </div>
+        </section>
+
+        <div id="date-status" class="status-message" role="status" aria-live="polite"></div>
+
+        <div class="cake-wrap" aria-hidden="true">
+          <span class="cake">🎂</span>
+        </div>
+
+        <p class="birthday-message">Happy Birthday</p>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

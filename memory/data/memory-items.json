@@ -1,0 +1,42 @@
+{
+  "minimumPairs": 2,
+  "pairs": [
+    {
+      "id": "badminton",
+      "text": "\"I am sweating like a waterfall in this volleyball court.\"",
+      "image": "./data/Badminton.png"
+    },
+    {
+      "id": "great-wall",
+      "text": "\"How many steps left? It's so hot here.\"",
+      "image": "./data/GreatWall.png"
+    },
+    {
+      "id": "munich",
+      "text": "\"What should we do here?\"",
+      "image": "./data/Munich.png"
+    },
+    {
+      "id": "pocky",
+      "text": "\"This is disgusting!\"",
+      "image": "./data/Pocky.png"
+    },
+    {
+      "id": "ac",
+      "text": "\"My spirit animal is a penguin.\"",
+      "image": "./data/ac.png"
+    },
+    {
+      "id": "dumplings",
+      "text": "\"I am eating healthy.\"",
+      "image": "./data/Dumplings.png"
+    },
+    {
+      "id": "shop",
+      "text": "\"I am starving. Too much choice.\"",
+      "image": "./data/shop.png"
+    }
+
+
+  ]
+}
